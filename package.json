@@ -1,0 +1,19 @@
+{
+  "name": "url-shortening-service",
+  "version": "0.0.1",
+  "description": "RESTFul API that allows you shorten long URLs, additionally you can retrive, update, delete and provide statistics of your short URLs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiantcc1/url-shortening-service.git"
+  },
+  "author": "Fabian Montaño",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabiantcc1/url-shortening-service/issues"
+  },
+  "homepage": "https://github.com/fabiantcc1/url-shortening-service#readme"
+}
