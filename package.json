@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fabiantcc1/url-shortening-service/issues"
   },
-  "homepage": "https://github.com/fabiantcc1/url-shortening-service#readme"
+  "homepage": "https://github.com/fabiantcc1/url-shortening-service#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
