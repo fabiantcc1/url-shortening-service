@@ -4,6 +4,6 @@ dotenv.config();
 
 export const config = {
     env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 3000,
-    url: process.env.APP_URL || `http://localhost:${port}`,
+    port: process.env.NODE_PORT || 3000,
+    url: process.env.NODE_URL || `http://localhost:${port}`,
 };
