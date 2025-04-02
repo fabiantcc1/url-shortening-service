@@ -1,23 +1,15 @@
-import { config } from '../config/config.js';
 import express from 'express';
-import { nanoid } from 'nanoid';
+import { ShortenService } from '../services/shorten.service.js';
 
 const router = express.Router();
+const service = new ShortenService();
 
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const { url } = req.body;
+        const shortUrl = await service.create(url);
 
-        const urlCode = nanoid(8);
-        const shortUrl = `${config.url}/${urlCode}`;
-
-        res.json({
-            id: 1,
-            url: url,
-            shortCode: urlCode,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        });
+        res.status(201).json(shortUrl);
     } catch (error) {
         next(error);
     }
