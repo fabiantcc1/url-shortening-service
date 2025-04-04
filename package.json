@@ -19,6 +19,7 @@
     "homepage": "https://github.com/fabiantcc1/url-shortening-service#readme",
     "dependencies": {
         "@babel/runtime": "^7.26.10",
+        "@hapi/boom": "^10.0.1",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
         "joi": "^17.13.3",
