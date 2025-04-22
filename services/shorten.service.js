@@ -18,7 +18,6 @@ export class ShortenService {
         const shortUrl = await this.models.Url.create(urlData);
         delete shortUrl.dataValues.statistics;
         delete shortUrl.dataValues.isActive;
-        shortUrl.dataValues.fullShortUrl = `${config.url}/${urlCode}`;
 
         return shortUrl;
     }
@@ -56,7 +55,6 @@ export class ShortenService {
         });
 
         delete updatedUrl.dataValues.isActive;
-        updatedUrl.dataValues.fullShortUrl = `${config.url}/${shortCode}`;
 
         return updatedUrl;
     }
