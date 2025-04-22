@@ -16,6 +16,7 @@ export const UrlSchema = {
     },
     shortCode: {
         allowNull: false,
+        unique: true,
         type: DataTypes.STRING,
         field: 'short_code',
     },
