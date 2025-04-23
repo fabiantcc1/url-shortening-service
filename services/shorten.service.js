@@ -48,4 +48,16 @@ export class ShortenService {
 
         return updatedUrl;
     }
+
+    async delete(shortCode) {
+        const url = await this.FindOne(shortCode);
+
+        const deletedUrl = await url.update({
+            isActive: false,
+        });
+
+        delete deletedUrl.dataValues.isActive;
+
+        return deletedUrl;
+    }
 }
