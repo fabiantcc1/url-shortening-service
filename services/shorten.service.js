@@ -1,4 +1,3 @@
-import { config } from '../config/config.js';
 import { nanoid } from 'nanoid';
 import { sequelize } from '../libs/sequelize.js';
 import Boom from '@hapi/boom';
@@ -22,7 +21,7 @@ export class ShortenService {
         return shortUrl;
     }
 
-    async findByShortCode(shortCode) {
+    async FindOne(shortCode) {
         const url = await this.models.Url.findOne({
             where: {
                 shortCode,
@@ -39,16 +38,7 @@ export class ShortenService {
     }
 
     async update(shortCode, newUrl) {
-        const url = await this.models.Url.findOne({
-            where: {
-                shortCode,
-                isActive: true,
-            },
-        });
-
-        if (!url) {
-            throw Boom.notFound('The URL with this short code does not exist');
-        }
+        const url = await this.FindOne(shortCode);
 
         const updatedUrl = await url.update({
             originalUrl: newUrl,
