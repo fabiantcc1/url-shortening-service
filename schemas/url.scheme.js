@@ -17,6 +17,5 @@ export const getShortUrlSchema = Joi.object({
 });
 
 export const updateShortUrlSchema = Joi.object({
-    shortCode,
     url,
 });
