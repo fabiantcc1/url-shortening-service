@@ -31,7 +31,7 @@ router.get(
     async (req, res, next) => {
         try {
             const { shortCode } = req.params;
-            const url = await service.findByShortCode(shortCode);
+            const url = await service.FindOne(shortCode);
 
             res.status(200).json(url);
         } catch (err) {
@@ -43,7 +43,7 @@ router.get(
 router.patch(
     '/:shortCode',
     validateHandler(getShortUrlSchema, 'params'),
-    validateHandler(createShortUrlSchema, 'body'),
+    validateHandler(updateShortUrlSchema, 'body'),
     async (req, res, next) => {
         try {
             const { shortCode } = req.params;
