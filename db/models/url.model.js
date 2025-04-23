@@ -50,7 +50,7 @@ export class Url extends Model {
             sequelize,
             tableName: URL_TABLE,
             modelName: 'Url',
-            timeStamps: false,
+            timestamps: false,
         };
     }
 }
