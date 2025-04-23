@@ -57,4 +57,19 @@ router.patch(
     },
 );
 
+router.delete(
+    '/:shortCode',
+    validateHandler(getShortUrlSchema, 'params'),
+    async (req, res, next) => {
+        try {
+            const { shortCode } = req.params;
+            const deletedUrl = await service.delete(shortCode);
+
+            res.status(204).json(deletedUrl);
+        } catch (err) {
+            next(err);
+        }
+    },
+);
+
 export default router;
