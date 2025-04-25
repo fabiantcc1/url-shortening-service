@@ -1,6 +1,6 @@
 import express from 'express';
-import shortenRouter from './shorten.route.js';
-import redirectRouter from './redirect.route.js';
+import shortenRouter from './shorten.router.js';
+import redirectRouter from './redirect.router.js';
 
 function routerApi(app) {
     const routerV1 = express.Router();
