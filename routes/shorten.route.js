@@ -31,7 +31,7 @@ router.get(
     async (req, res, next) => {
         try {
             const { shortCode } = req.params;
-            const url = await service.FindOne(shortCode);
+            const url = await service.findOne(shortCode);
 
             res.status(200).json(url);
         } catch (err) {
