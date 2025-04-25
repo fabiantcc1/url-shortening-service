@@ -21,7 +21,7 @@ export class ShortenService {
         return shortUrl;
     }
 
-    async FindOne(shortCode) {
+    async findOne(shortCode) {
         const url = await this.models.Url.findOne({
             where: {
                 shortCode,
@@ -38,7 +38,7 @@ export class ShortenService {
     }
 
     async update(shortCode, newUrl) {
-        const url = await this.FindOne(shortCode);
+        const url = await this.findOne(shortCode);
 
         const updatedUrl = await url.update({
             originalUrl: newUrl,
@@ -50,7 +50,7 @@ export class ShortenService {
     }
 
     async delete(shortCode) {
-        const url = await this.FindOne(shortCode);
+        const url = await this.findOne(shortCode);
 
         const deletedUrl = await url.update({
             isActive: false,
@@ -59,5 +59,14 @@ export class ShortenService {
         delete deletedUrl.dataValues.isActive;
 
         return deletedUrl;
+    }
+
+    async redirect(shortCode) {
+        const url = await this.findOne(shortCode);
+
+        await url.increment('statistics');
+
+        // Retornar la URL original para la redirección
+        return url.originalUrl;
     }
 }
