@@ -22,6 +22,46 @@ export class ShortenService {
     }
 
     async findOne(shortCode) {
+        const url = await this.findByShortCode(shortCode);
+
+        delete url.dataValues.statistics;
+
+        return url;
+    }
+
+    async update(shortCode, newUrl) {
+        const url = await this.findByShortCode(shortCode);
+
+        const updatedUrl = await url.update({
+            originalUrl: newUrl,
+        });
+
+        delete updatedUrl.dataValues.statistics;
+
+        return updatedUrl;
+    }
+
+    async delete(shortCode) {
+        const url = await this.findByShortCode(shortCode);
+
+        const deletedUrl = await url.update({
+            isActive: false,
+        });
+
+        delete deletedUrl.dataValues.statistics;
+
+        return deletedUrl;
+    }
+
+    async redirect(shortCode) {
+        const url = await this.findByShortCode(shortCode);
+
+        await url.increment('statistics');
+
+        return url.originalUrl;
+    }
+
+    async findByShortCode(shortCode) {
         const url = await this.models.Url.findOne({
             where: {
                 shortCode,
@@ -35,38 +75,5 @@ export class ShortenService {
         }
 
         return url;
-    }
-
-    async update(shortCode, newUrl) {
-        const url = await this.findOne(shortCode);
-
-        const updatedUrl = await url.update({
-            originalUrl: newUrl,
-        });
-
-        delete updatedUrl.dataValues.isActive;
-
-        return updatedUrl;
-    }
-
-    async delete(shortCode) {
-        const url = await this.findOne(shortCode);
-
-        const deletedUrl = await url.update({
-            isActive: false,
-        });
-
-        delete deletedUrl.dataValues.isActive;
-
-        return deletedUrl;
-    }
-
-    async redirect(shortCode) {
-        const url = await this.findOne(shortCode);
-
-        await url.increment('statistics');
-
-        // Retornar la URL original para la redirección
-        return url.originalUrl;
     }
 }
