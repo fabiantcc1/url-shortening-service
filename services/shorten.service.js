@@ -61,6 +61,7 @@ export class ShortenService {
         return url.originalUrl;
     }
 
+    // Internal class helpers methods
     async findByShortCode(shortCode) {
         const url = await this.models.Url.findOne({
             where: {
