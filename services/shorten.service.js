@@ -53,6 +53,12 @@ export class ShortenService {
         return deletedUrl;
     }
 
+    async getStatistics(shortCode) {
+        const url = await this.findByShortCode(shortCode);
+
+        return url;
+    }
+
     async redirect(shortCode) {
         const url = await this.findByShortCode(shortCode);
 
