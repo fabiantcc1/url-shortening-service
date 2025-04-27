@@ -40,6 +40,21 @@ router.get(
     },
 );
 
+router.get(
+    '/:shortCode/stats',
+    validateHandler(getShortUrlSchema, 'params'),
+    async (req, res, next) => {
+        try {
+            const { shortCode } = req.params;
+            const statistics = await service.getStatistics(shortCode);
+
+            res.status(200).json(statistics);
+        } catch (err) {
+            next(err);
+        }
+    },
+);
+
 router.patch(
     '/:shortCode',
     validateHandler(getShortUrlSchema, 'params'),
