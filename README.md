@@ -1,5 +1,7 @@
 # URL Shortening Service
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/fabiantcc1/url-shortening-service)
+
 [This URL shortening project](https://roadmap.sh/projects/url-shortening-service) is a robust RESTful API for shortening long URLs with statistics tracking capabilities. This service allows you to create, retrieve, update, and delete shortened URLs while providing usage statistics for each URL.
 
 ## Table of Contents
