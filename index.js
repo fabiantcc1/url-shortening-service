@@ -1,8 +1,7 @@
 import express from 'express';
 import routerApi from './routes/index.js';
 import { config } from './config/config.js';
-import { logError } from './middleware/error.handler.js';
-import { errorHandler } from './middleware/error.handler.js';
+import { errorHandler, logError } from './middlewares/error.handler.js';
 
 const app = express();
 const port = config.port;

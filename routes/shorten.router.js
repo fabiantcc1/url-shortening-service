@@ -1,6 +1,6 @@
 import express from 'express';
 import { ShortenService } from '../services/shorten.service.js';
-import { validateHandler } from '../middleware/validator.handler.js';
+import { validateHandler } from '../middlewares/validator.handler.js';
 import {
     createShortUrlSchema,
     getShortUrlSchema,
